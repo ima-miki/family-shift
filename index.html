@@ -536,7 +536,10 @@ function getWeekDates(offset = 0) {
     return d;
   });
 }
-const dateStr = d => d.toISOString().slice(0, 10);
+const dateStr = d => {
+  const jst = new Date(d.getTime() + 9 * 60 * 60 * 1000);
+  return jst.toISOString().slice(0, 10);
+};
 const DAY_NAMES = ['月','火','水','木','金','土','日'];
 
 // ══ 認証 ═════════════════════════════════
