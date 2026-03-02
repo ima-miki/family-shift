@@ -13,330 +13,299 @@
   :root {
     --bg: #e8f4fd;
     --surface: #ffffff;
-    --surface2: #f0f8ff;
-    --accent: #ff6b6b;
     --blue: #4a90d9;
     --teal: #2196a8;
     --yellow: #ff9500;
+    --accent: #ff6b6b;
     --text: #1a3a4a;
     --text-muted: #6a8fa0;
     --border: rgba(74,144,217,0.15);
     --radius: 14px;
   }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans JP',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; overflow-x:hidden; }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Noto Sans JP', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* ══ ログイン画面 ══ */
+  /* ══ ログイン ══ */
   #loginScreen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 2rem;
-    background:
-      radial-gradient(ellipse at 20% 10%, rgba(255,255,255,0.9) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 20%, rgba(174,214,241,0.7) 0%, transparent 45%),
-      linear-gradient(180deg, #b8dff7 0%, #daeefb 40%, #eef8fd 100%);
-    position: relative; overflow: hidden;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    min-height:100vh; padding:2rem;
+    background: radial-gradient(ellipse at 20% 10%,rgba(255,255,255,0.9) 0%,transparent 50%),
+                radial-gradient(ellipse at 80% 20%,rgba(174,214,241,0.7) 0%,transparent 45%),
+                linear-gradient(180deg,#b8dff7 0%,#daeefb 40%,#eef8fd 100%);
+    position:relative; overflow:hidden;
   }
-  #loginScreen::before, #loginScreen::after {
-    content: ''; position: absolute;
-    background: rgba(255,255,255,0.75);
-    border-radius: 50px; filter: blur(2px);
+  #loginScreen::before,#loginScreen::after {
+    content:''; position:absolute; background:rgba(255,255,255,0.75); border-radius:50px; filter:blur(2px);
   }
-  #loginScreen::before {
-    width: 180px; height: 60px; top: 12%; left: 5%;
-    box-shadow: 40px -15px 0 20px rgba(255,255,255,0.6), 80px 5px 0 10px rgba(255,255,255,0.5);
-  }
-  #loginScreen::after {
-    width: 120px; height: 45px; top: 20%; right: 8%;
-    box-shadow: 30px -10px 0 15px rgba(255,255,255,0.6);
-  }
+  #loginScreen::before { width:180px;height:60px;top:12%;left:5%; box-shadow:40px -15px 0 20px rgba(255,255,255,0.6),80px 5px 0 10px rgba(255,255,255,0.5); }
+  #loginScreen::after  { width:120px;height:45px;top:20%;right:8%; box-shadow:30px -10px 0 15px rgba(255,255,255,0.6); }
 
   .login-card {
-    background: rgba(255,255,255,0.88);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.9);
-    border-radius: 24px;
-    padding: 2.5rem 2rem;
-    text-align: center;
-    box-shadow: 0 8px 40px rgba(74,144,217,0.15);
-    position: relative; z-index: 1;
-    width: 100%; max-width: 360px;
+    background:rgba(255,255,255,0.88); backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.9); border-radius:24px;
+    padding:2.5rem 2rem; text-align:center;
+    box-shadow:0 8px 40px rgba(74,144,217,0.15);
+    position:relative; z-index:1; width:100%; max-width:360px;
   }
-
-  .login-logo { font-size: 3rem; margin-bottom: 0.8rem; animation: float 3s ease-in-out infinite; }
+  .login-logo { font-size:3rem; margin-bottom:0.8rem; animation:float 3s ease-in-out infinite; }
   @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-
-  .login-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.3rem; color: #1a3a4a; }
-  .login-sub { color: #6a8fa0; font-size: 0.88rem; margin-bottom: 1.8rem; line-height: 1.6; }
-
+  .login-title { font-size:1.5rem; font-weight:700; margin-bottom:0.3rem; }
+  .login-sub { color:var(--text-muted); font-size:0.88rem; margin-bottom:1.8rem; line-height:1.6; }
   .btn-google {
-    display: flex; align-items: center; gap: 0.8rem;
-    background: #4a90d9; color: white; border: none;
-    padding: 0.9rem 2rem; border-radius: 50px;
-    font-size: 1rem; font-weight: 600; cursor: pointer;
-    transition: all 0.2s; box-shadow: 0 4px 16px rgba(74,144,217,0.35);
-    margin: 0 auto;
+    display:flex; align-items:center; gap:0.8rem;
+    background:#4a90d9; color:white; border:none;
+    padding:0.9rem 2rem; border-radius:50px;
+    font-size:1rem; font-weight:600; cursor:pointer;
+    transition:all 0.2s; box-shadow:0 4px 16px rgba(74,144,217,0.35); margin:0 auto;
   }
-  .btn-google:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(74,144,217,0.45); background: #3a7fc9; }
-  .btn-google img { width: 22px; filter: brightness(10); }
+  .btn-google:hover { transform:translateY(-2px); background:#3a7fc9; }
+  .btn-google img { width:22px; filter:brightness(10); }
 
-  /* ══ グループ選択画面 ══ */
-  #groupScreen { display: none; flex-direction: column; min-height: 100vh; }
-
-  .group-header {
-    background: rgba(255,255,255,0.9);
-    border-bottom: 1px solid var(--border);
-    padding: 1rem 1.2rem;
-    display: flex; align-items: center; justify-content: space-between;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 2px 12px rgba(74,144,217,0.08);
+  /* ══ グループ画面 ══ */
+  #groupScreen { display:none; flex-direction:column; min-height:100vh; }
+  .top-bar {
+    background:rgba(255,255,255,0.9); border-bottom:1px solid var(--border);
+    padding:0.9rem 1.2rem; display:flex; align-items:center; justify-content:space-between;
+    backdrop-filter:blur(12px); box-shadow:0 2px 12px rgba(74,144,217,0.08);
+    position:sticky; top:0; z-index:100;
   }
+  .top-bar-title { font-weight:700; font-size:1rem; }
+  .top-bar-sub { font-size:0.72rem; color:var(--text-muted); }
 
-  .group-main {
-    flex: 1; padding: 1.5rem 1.2rem;
-    max-width: 480px; margin: 0 auto; width: 100%;
+  .screen-body { flex:1; padding:1.2rem; max-width:480px; margin:0 auto; width:100%; }
+  .section { margin-bottom:1.6rem; }
+  .section-label {
+    font-size:0.75rem; font-weight:700; color:var(--text-muted);
+    letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.7rem;
   }
-
-  .group-section { margin-bottom: 1.8rem; }
-  .group-section-title {
-    font-size: 0.78rem; font-weight: 700;
-    color: var(--text-muted); letter-spacing: 0.08em;
-    text-transform: uppercase; margin-bottom: 0.8rem;
-  }
-
-  .btn-primary {
-    width: 100%;
-    background: linear-gradient(135deg, #4a90d9, #2196a8);
-    color: white; border: none; border-radius: 10px;
-    padding: 0.85rem; font-size: 0.95rem; font-weight: 700;
-    cursor: pointer; transition: all 0.2s;
-    box-shadow: 0 4px 14px rgba(74,144,217,0.3);
-  }
-  .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
-  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-
-  .btn-secondary {
-    width: 100%;
-    background: white; color: var(--blue);
-    border: 2px solid var(--blue); border-radius: 10px;
-    padding: 0.85rem; font-size: 0.95rem; font-weight: 700;
-    cursor: pointer; transition: all 0.2s;
-  }
-  .btn-secondary:hover { background: #f0f8ff; }
-
-  .input-row { display: flex; gap: 0.6rem; margin-bottom: 0.6rem; }
-  .input-row input { flex: 1; }
-
-  .group-list { display: flex; flex-direction: column; gap: 0.6rem; }
 
   .group-item {
-    background: white; border: 1px solid var(--border);
-    border-radius: 12px; padding: 1rem 1.2rem;
-    display: flex; align-items: center; justify-content: space-between;
-    cursor: pointer; transition: all 0.2s;
-    box-shadow: 0 1px 8px rgba(74,144,217,0.06);
+    background:white; border:1px solid var(--border); border-radius:12px;
+    padding:1rem 1.2rem; display:flex; align-items:center; justify-content:space-between;
+    cursor:pointer; transition:all 0.2s; margin-bottom:0.5rem;
+    box-shadow:0 1px 8px rgba(74,144,217,0.06);
   }
-  .group-item:hover { border-color: var(--blue); box-shadow: 0 4px 16px rgba(74,144,217,0.12); }
-  .group-item-name { font-weight: 700; font-size: 1rem; }
-  .group-item-meta { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; }
-  .group-item-arrow { color: var(--blue); font-size: 1.2rem; }
+  .group-item:hover { border-color:var(--blue); }
+  .group-item-name { font-weight:700; }
+  .group-item-meta { font-size:0.75rem; color:var(--text-muted); margin-top:0.15rem; }
 
-  /* ══ アプリ本体 ══ */
-  #app { display: none; flex-direction: column; min-height: 100vh; }
+  .divider { display:flex; align-items:center; gap:0.8rem; color:var(--text-muted); font-size:0.8rem; margin:1rem 0; }
+  .divider::before,.divider::after { content:''; flex:1; height:1px; background:rgba(74,144,217,0.15); }
 
-  header {
-    background: rgba(255,255,255,0.9);
-    border-bottom: 1px solid var(--border);
-    padding: 0.8rem 1.2rem;
-    display: flex; align-items: center; justify-content: space-between;
-    position: sticky; top: 0; z-index: 100;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 2px 12px rgba(74,144,217,0.08);
+  /* ══ 共通ボタン ══ */
+  .btn-primary {
+    width:100%; background:linear-gradient(135deg,#4a90d9,#2196a8);
+    color:white; border:none; border-radius:10px;
+    padding:0.85rem; font-size:0.95rem; font-weight:700;
+    cursor:pointer; transition:all 0.2s; box-shadow:0 4px 14px rgba(74,144,217,0.3);
   }
-
-  .header-left { display: flex; align-items: center; gap: 0.6rem; }
-  .header-group { font-weight: 700; font-size: 1rem; }
-  .header-user { font-size: 0.72rem; color: var(--text-muted); }
-  .header-right { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; justify-content: flex-end; }
-
+  .btn-primary:hover { opacity:0.9; transform:translateY(-1px); }
+  .btn-primary:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
+  .btn-secondary {
+    background:white; color:var(--blue); border:2px solid var(--blue);
+    border-radius:10px; padding:0.85rem; font-size:0.95rem; font-weight:700;
+    cursor:pointer; transition:all 0.2s;
+  }
+  .btn-secondary:hover { background:#f0f8ff; }
   .btn-icon {
-    background: transparent; border: 1px solid var(--border);
-    color: var(--text-muted); padding: 0.4rem 0.7rem;
-    border-radius: 20px; font-size: 0.78rem; cursor: pointer;
-    transition: all 0.2s; white-space: nowrap;
+    background:transparent; border:1px solid var(--border); color:var(--text-muted);
+    padding:0.38rem 0.7rem; border-radius:20px; font-size:0.75rem; cursor:pointer;
+    transition:all 0.2s; white-space:nowrap;
   }
-  .btn-icon:hover { border-color: var(--blue); color: var(--blue); }
+  .btn-icon:hover { border-color:var(--blue); color:var(--blue); }
+  .btn-danger {
+    background:transparent; border:1px solid #ffcccc; color:var(--accent);
+    padding:0.38rem 0.7rem; border-radius:20px; font-size:0.75rem; cursor:pointer;
+    transition:all 0.2s;
+  }
+  .btn-danger:hover { background:#fff0f0; }
 
-  main {
-    flex: 1; padding: 1.2rem;
-    max-width: 600px; margin: 0 auto; width: 100%;
-    background: linear-gradient(180deg, #e8f4fd 0%, #f5fbff 100%);
-    min-height: calc(100vh - 60px);
-  }
-
-  /* 招待コードバナー */
-  .invite-banner {
-    background: linear-gradient(135deg, #e8f4fd, #d0eaf9);
-    border: 1px solid rgba(74,144,217,0.2);
-    border-radius: var(--radius);
-    padding: 1rem 1.2rem;
-    margin-bottom: 1.2rem;
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 1rem;
-  }
-  .invite-label { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.2rem; }
-  .invite-code {
-    font-family: 'DM Mono', monospace;
-    font-size: 1.6rem; font-weight: 700;
-    color: var(--blue); letter-spacing: 0.15em;
-  }
-  .btn-copy {
-    background: white; border: 1px solid var(--border);
-    border-radius: 8px; padding: 0.5rem 0.8rem;
-    font-size: 0.8rem; cursor: pointer; white-space: nowrap;
-    color: var(--blue); font-weight: 600;
-    transition: all 0.2s; flex-shrink: 0;
-  }
-  .btn-copy:hover { background: var(--blue); color: white; }
-
-  /* フォームカード */
-  .card {
-    background: rgba(255,255,255,0.92);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.2rem; margin-bottom: 1.2rem;
-    box-shadow: 0 2px 16px rgba(74,144,217,0.08);
-  }
-  .card-title {
-    font-size: 0.78rem; font-weight: 700;
-    color: var(--text-muted); letter-spacing: 0.08em;
-    text-transform: uppercase; margin-bottom: 1rem;
-  }
-
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 0.8rem; }
-  .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
-  .form-group.full { grid-column: 1 / -1; }
-  label { font-size: 0.78rem; color: var(--text-muted); }
-
+  /* ══ フォーム ══ */
   input, select, textarea {
-    background: #f0f8ff; border: 1px solid rgba(74,144,217,0.2);
-    border-radius: 8px; color: var(--text);
-    padding: 0.6rem 0.8rem; font-size: 0.9rem;
-    font-family: inherit; transition: all 0.2s; width: 100%;
+    background:#f0f8ff; border:1px solid rgba(74,144,217,0.2);
+    border-radius:8px; color:var(--text);
+    padding:0.6rem 0.8rem; font-size:0.9rem;
+    font-family:inherit; transition:all 0.2s; width:100%;
   }
   input:focus, select:focus, textarea:focus {
-    outline: none; border-color: #4a90d9;
-    background: white; box-shadow: 0 0 0 3px rgba(74,144,217,0.1);
+    outline:none; border-color:#4a90d9; background:white;
+    box-shadow:0 0 0 3px rgba(74,144,217,0.1);
   }
-  select option { background: white; color: var(--text); }
-  textarea { resize: vertical; min-height: 60px; }
+  select option { background:white; color:var(--text); }
+  label { font-size:0.78rem; color:var(--text-muted); }
+  .form-group { display:flex; flex-direction:column; gap:0.35rem; margin-bottom:0.8rem; }
+  .input-row { display:flex; gap:0.6rem; }
+  .input-row input { flex:1; }
+
+  /* ══ アプリ本体 ══ */
+  #app { display:none; flex-direction:column; min-height:100vh; }
+
+  header {
+    background:rgba(255,255,255,0.9); border-bottom:1px solid var(--border);
+    padding:0.75rem 1rem; display:flex; align-items:center; justify-content:space-between;
+    position:sticky; top:0; z-index:100;
+    backdrop-filter:blur(12px); box-shadow:0 2px 12px rgba(74,144,217,0.08);
+    flex-wrap:wrap; gap:0.4rem;
+  }
+  .header-left { display:flex; align-items:center; gap:0.5rem; }
+  .header-group { font-weight:700; font-size:0.95rem; }
+  .header-user { font-size:0.7rem; color:var(--text-muted); }
+  .header-right { display:flex; align-items:center; gap:0.4rem; flex-wrap:wrap; }
+  .admin-badge {
+    background:linear-gradient(135deg,#ff9500,#ff6b6b);
+    color:white; font-size:0.65rem; font-weight:700;
+    padding:0.15rem 0.5rem; border-radius:10px;
+  }
+
+  main {
+    flex:1; padding:1rem; max-width:600px; margin:0 auto; width:100%;
+    background:linear-gradient(180deg,#e8f4fd 0%,#f5fbff 100%);
+    min-height:calc(100vh - 60px);
+  }
+
+  /* 招待バナー */
+  .invite-banner {
+    background:linear-gradient(135deg,#e8f4fd,#d0eaf9);
+    border:1px solid rgba(74,144,217,0.2); border-radius:var(--radius);
+    padding:1rem 1.2rem; margin-bottom:1rem;
+    display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  }
+  .invite-label { font-size:0.75rem; color:var(--text-muted); margin-bottom:0.2rem; }
+  .invite-code { font-family:'DM Mono',monospace; font-size:1.6rem; font-weight:700; color:var(--blue); letter-spacing:0.15em; }
+  .btn-copy {
+    background:white; border:1px solid var(--border); border-radius:8px;
+    padding:0.5rem 0.8rem; font-size:0.8rem; cursor:pointer;
+    color:var(--blue); font-weight:600; transition:all 0.2s; flex-shrink:0;
+  }
+  .btn-copy:hover { background:var(--blue); color:white; }
+
+  /* カード */
+  .card {
+    background:rgba(255,255,255,0.92); border:1px solid var(--border);
+    border-radius:var(--radius); padding:1rem; margin-bottom:1rem;
+    box-shadow:0 2px 16px rgba(74,144,217,0.08);
+  }
+  .card-title {
+    font-size:0.75rem; font-weight:700; color:var(--text-muted);
+    letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.9rem;
+  }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:0.7rem; margin-bottom:0.7rem; }
+  .form-row .full { grid-column:1/-1; }
+
+  /* スタンプ選択 */
+  .stamp-label { font-size:0.78rem; color:var(--text-muted); margin-bottom:0.5rem; }
+  .stamps {
+    display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.8rem;
+  }
+  .stamp-btn {
+    background:#f0f8ff; border:2px solid rgba(74,144,217,0.2);
+    border-radius:10px; padding:0.45rem 0.7rem;
+    font-size:0.85rem; cursor:pointer; transition:all 0.2s;
+    display:flex; align-items:center; gap:0.3rem; white-space:nowrap;
+  }
+  .stamp-btn:hover { border-color:var(--blue); background:white; }
+  .stamp-btn.selected {
+    background:var(--blue); color:white; border-color:var(--blue);
+    box-shadow:0 2px 8px rgba(74,144,217,0.3);
+  }
+  .selected-stamps {
+    display:flex; flex-wrap:wrap; gap:0.3rem; margin-bottom:0.5rem; min-height:1.5rem;
+  }
+  .selected-tag {
+    background:var(--blue); color:white;
+    border-radius:8px; padding:0.25rem 0.6rem;
+    font-size:0.8rem; display:flex; align-items:center; gap:0.3rem;
+  }
+  .selected-tag button {
+    background:transparent; border:none; color:white;
+    cursor:pointer; font-size:0.85rem; padding:0; line-height:1;
+    width:auto;
+  }
 
   .btn-add {
-    width: 100%;
-    background: linear-gradient(135deg, #4a90d9, #2196a8);
-    color: white; border: none; border-radius: 8px;
-    padding: 0.75rem; font-size: 0.95rem; font-weight: 700;
-    cursor: pointer; transition: all 0.2s; margin-top: 0.4rem;
-    box-shadow: 0 4px 14px rgba(74,144,217,0.3);
+    width:100%; background:linear-gradient(135deg,#4a90d9,#2196a8);
+    color:white; border:none; border-radius:8px;
+    padding:0.75rem; font-size:0.95rem; font-weight:700;
+    cursor:pointer; transition:all 0.2s;
+    box-shadow:0 4px 14px rgba(74,144,217,0.3);
   }
-  .btn-add:hover { opacity: 0.9; transform: translateY(-1px); }
-  .btn-add:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+  .btn-add:hover { opacity:0.9; transform:translateY(-1px); }
+  .btn-add:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
 
   /* 週ナビ */
-  .week-nav {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 1rem;
-  }
-  .week-label { font-family: 'DM Mono', monospace; font-size: 0.85rem; color: var(--text-muted); }
+  .week-nav { display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; }
+  .week-label { font-family:'DM Mono',monospace; font-size:0.82rem; color:var(--text-muted); }
   .btn-nav {
-    background: rgba(255,255,255,0.9); border: 1px solid rgba(74,144,217,0.2);
-    color: #4a90d9; padding: 0.4rem 0.8rem; border-radius: 8px;
-    cursor: pointer; font-size: 0.85rem; font-weight: 600;
-    transition: all 0.2s;
+    background:rgba(255,255,255,0.9); border:1px solid rgba(74,144,217,0.2);
+    color:#4a90d9; padding:0.4rem 0.8rem; border-radius:8px;
+    cursor:pointer; font-size:0.82rem; font-weight:600; transition:all 0.2s;
   }
-  .btn-nav:hover { background: #4a90d9; color: white; border-color: #4a90d9; }
+  .btn-nav:hover { background:#4a90d9; color:white; }
 
   /* シフト一覧 */
-  .day-block { margin-bottom: 1rem; }
-  .day-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
-  .day-name { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; color: var(--text-muted); text-transform: uppercase; }
-  .day-date { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--text-muted); }
-  .today-badge { background: #ff6b6b; color: white; font-size: 0.65rem; padding: 0.1rem 0.4rem; border-radius: 4px; font-weight: 700; }
+  .day-block { margin-bottom:0.9rem; }
+  .day-header { display:flex; align-items:center; gap:0.5rem; margin-bottom:0.4rem; }
+  .day-name { font-size:0.75rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; }
+  .day-date { font-family:'DM Mono',monospace; font-size:0.72rem; color:var(--text-muted); }
+  .today-badge { background:#ff6b6b; color:white; font-size:0.62rem; padding:0.1rem 0.4rem; border-radius:4px; font-weight:700; }
 
   .shift-item {
-    background: rgba(255,255,255,0.95);
-    border: 1px solid rgba(74,144,217,0.12);
-    border-left: 4px solid #4a90d9;
-    border-radius: var(--radius); padding: 0.8rem 1rem;
-    margin-bottom: 0.5rem; display: flex; align-items: flex-start;
-    justify-content: space-between; gap: 0.8rem;
-    animation: slideIn 0.25s ease;
-    box-shadow: 0 1px 8px rgba(74,144,217,0.07);
+    background:rgba(255,255,255,0.95); border:1px solid rgba(74,144,217,0.12);
+    border-left:4px solid #4a90d9; border-radius:var(--radius);
+    padding:0.7rem 0.9rem; margin-bottom:0.4rem;
+    display:flex; align-items:flex-start; justify-content:space-between; gap:0.7rem;
+    animation:slideIn 0.25s ease; box-shadow:0 1px 8px rgba(74,144,217,0.07);
   }
-  @keyframes slideIn { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:translateY(0)} }
-  .shift-item.mine { border-left-color: #ff9500; }
-
-  .shift-info { flex: 1; }
-  .shift-member { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.2rem; }
-  .shift-time { font-family: 'DM Mono', monospace; font-size: 0.8rem; color: #4a90d9; font-weight: 600; }
-  .shift-item.mine .shift-time { color: #ff9500; }
-  .shift-note { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.25rem; }
-
-  .btn-delete {
-    background: transparent; border: none; color: #ccc;
-    cursor: pointer; font-size: 1rem; padding: 0.2rem;
-    transition: color 0.2s; flex-shrink: 0;
+  @keyframes slideIn { from{opacity:0;transform:translateY(-5px)} to{opacity:1;transform:translateY(0)} }
+  .shift-item.mine { border-left-color:#ff9500; }
+  .shift-info { flex:1; }
+  .shift-member { font-weight:700; font-size:0.85rem; margin-bottom:0.2rem; }
+  .shift-time { font-family:'DM Mono',monospace; font-size:0.78rem; color:var(--blue); font-weight:600; }
+  .shift-item.mine .shift-time { color:#ff9500; }
+  .shift-stamps { display:flex; flex-wrap:wrap; gap:0.25rem; margin-top:0.3rem; }
+  .shift-stamp-tag {
+    background:#f0f8ff; border:1px solid rgba(74,144,217,0.15);
+    border-radius:6px; padding:0.15rem 0.45rem; font-size:0.75rem;
   }
-  .btn-delete:hover { color: #ff6b6b; }
+  .shift-note { font-size:0.75rem; color:var(--text-muted); margin-top:0.25rem; }
+  .btn-delete { background:transparent; border:none; color:#ccc; cursor:pointer; font-size:0.95rem; padding:0.2rem; transition:color 0.2s; flex-shrink:0; }
+  .btn-delete:hover { color:#ff6b6b; }
+  .empty-day { font-size:0.78rem; color:#aac8dc; padding:0.4rem 0; font-style:italic; }
 
-  .empty-day { font-size: 0.8rem; color: #aac8dc; padding: 0.5rem 0; font-style: italic; }
-  .loading { display: flex; justify-content: center; padding: 2rem; color: var(--text-muted); font-size: 0.9rem; }
+  /* メンバー管理パネル */
+  .member-panel { margin-bottom:1rem; }
+  .member-list { display:flex; flex-direction:column; gap:0.4rem; margin-bottom:0.6rem; }
+  .member-row {
+    background:white; border:1px solid var(--border); border-radius:10px;
+    padding:0.6rem 0.9rem; display:flex; align-items:center; justify-content:space-between;
+  }
+  .member-name { font-size:0.88rem; font-weight:500; }
+  .member-type { font-size:0.7rem; color:var(--text-muted); }
 
   /* トースト */
   .toast {
-    position: fixed; bottom: 1.5rem; left: 50%;
-    transform: translateX(-50%) translateY(100px);
-    background: white; border: 1px solid #4a90d9; color: #4a90d9;
-    padding: 0.7rem 1.5rem; border-radius: 50px;
-    font-size: 0.85rem; font-weight: 600; z-index: 999;
-    transition: transform 0.3s ease; white-space: nowrap;
-    box-shadow: 0 4px 20px rgba(74,144,217,0.2);
+    position:fixed; bottom:1.5rem; left:50%;
+    transform:translateX(-50%) translateY(100px);
+    background:white; border:1px solid #4a90d9; color:#4a90d9;
+    padding:0.7rem 1.5rem; border-radius:50px;
+    font-size:0.85rem; font-weight:600; z-index:999;
+    transition:transform 0.3s ease; white-space:nowrap;
+    box-shadow:0 4px 20px rgba(74,144,217,0.2);
   }
-  .toast.show { transform: translateX(-50%) translateY(0); }
-  .toast.error { border-color: #ff6b6b; color: #ff6b6b; }
+  .toast.show { transform:translateX(-50%) translateY(0); }
+  .toast.error { border-color:#ff6b6b; color:#ff6b6b; }
 
   .err-msg {
-    display: none; background: rgba(255,107,107,0.1);
-    border: 1px solid #ff6b6b; color: #e05555;
-    padding: 0.8rem 1rem; border-radius: 8px;
-    font-size: 0.85rem; margin-top: 0.8rem;
+    display:none; background:rgba(255,107,107,0.1);
+    border:1px solid #ff6b6b; color:#e05555;
+    padding:0.7rem 0.9rem; border-radius:8px; font-size:0.83rem; margin-top:0.7rem;
   }
-
-  .divider {
-    text-align: center; color: var(--text-muted);
-    font-size: 0.8rem; margin: 1rem 0;
-    display: flex; align-items: center; gap: 0.8rem;
-  }
-  .divider::before, .divider::after {
-    content: ''; flex: 1; height: 1px;
-    background: rgba(74,144,217,0.15);
-  }
+  .loading { display:flex; justify-content:center; padding:2rem; color:var(--text-muted); font-size:0.88rem; }
 </style>
 </head>
 <body>
 
-<!-- ══ ① ログイン画面 ══ -->
+<!-- ══ ① ログイン ══ -->
 <div id="loginScreen">
   <div class="login-card">
     <div class="login-logo">🏠</div>
@@ -350,46 +319,39 @@
   </div>
 </div>
 
-<!-- ══ ② グループ選択画面 ══ -->
+<!-- ══ ② グループ選択 ══ -->
 <div id="groupScreen">
-  <div class="group-header">
+  <div class="top-bar">
     <div>
-      <div style="font-weight:700">グループを選ぶ</div>
-      <div style="font-size:0.75rem;color:var(--text-muted)" id="groupHeaderUser"></div>
+      <div class="top-bar-title">グループを選ぶ</div>
+      <div class="top-bar-sub" id="groupHeaderUser"></div>
     </div>
     <button class="btn-icon" id="groupLogoutBtn">ログアウト</button>
   </div>
-
-  <div class="group-main">
-
-    <div class="group-section">
-      <div class="group-section-title">参加中のグループ</div>
+  <div class="screen-body">
+    <div class="section">
+      <div class="section-label">参加中のグループ</div>
       <div id="myGroupList"><div class="loading">読み込み中…</div></div>
     </div>
-
     <div class="divider">または</div>
-
-    <div class="group-section">
-      <div class="group-section-title">新しいグループを作る</div>
-      <div class="form-group" style="margin-bottom:0.6rem">
-        <label>グループ名（例：田中家の見守り）</label>
+    <div class="section">
+      <div class="section-label">新しいグループを作る</div>
+      <div class="form-group">
+        <label>グループ名（例：今泉家見守り）</label>
         <input type="text" id="newGroupName" placeholder="グループ名を入力" maxlength="30">
       </div>
       <button class="btn-primary" id="createGroupBtn">＋ グループを作成</button>
     </div>
-
     <div class="divider">または</div>
-
-    <div class="group-section">
-      <div class="group-section-title">招待コードで参加する</div>
-      <div class="input-row">
+    <div class="section">
+      <div class="section-label">招待コードで参加する</div>
+      <div class="input-row" style="margin-bottom:0.5rem">
         <input type="text" id="inviteCodeInput" placeholder="招待コード（6桁）" maxlength="6"
-          style="text-transform:uppercase;letter-spacing:0.15em;font-family:'DM Mono',monospace;font-size:1.1rem">
-        <button class="btn-secondary" id="joinGroupBtn" style="width:auto;padding:0 1.2rem">参加</button>
+          style="text-transform:uppercase;letter-spacing:0.15em;font-family:'DM Mono',monospace;font-size:1rem">
+        <button class="btn-secondary" id="joinGroupBtn" style="width:auto;padding:0 1rem;white-space:nowrap">参加</button>
       </div>
       <div class="err-msg" id="joinError"></div>
     </div>
-
   </div>
 </div>
 
@@ -399,18 +361,23 @@
     <div class="header-left">
       <span>🏠</span>
       <div>
-        <div class="header-group" id="headerGroupName"></div>
+        <div style="display:flex;align-items:center;gap:0.4rem">
+          <div class="header-group" id="headerGroupName"></div>
+          <span class="admin-badge" id="adminBadge" style="display:none">管理者</span>
+        </div>
         <div class="header-user" id="headerUser"></div>
       </div>
     </div>
     <div class="header-right">
       <button class="btn-icon" id="inviteBtn">招待コード</button>
-      <button class="btn-icon" id="changeGroupBtn">グループ変更</button>
+      <button class="btn-icon" id="membersBtn">メンバー管理</button>
+      <button class="btn-icon" id="changeGroupBtn">変更</button>
       <button class="btn-icon" id="logoutBtn">ログアウト</button>
     </div>
   </header>
 
   <main>
+    <!-- 招待コードバナー -->
     <div class="invite-banner" id="inviteBanner" style="display:none">
       <div>
         <div class="invite-label">📨 このコードを家族に教えてください</div>
@@ -419,16 +386,35 @@
       <button class="btn-copy" id="copyCodeBtn">コピー</button>
     </div>
 
+    <!-- メンバー管理パネル（管理者のみ） -->
+    <div class="card member-panel" id="memberPanel" style="display:none">
+      <div class="card-title">メンバー管理</div>
+      <div class="member-list" id="memberList"></div>
+      <div class="input-row" style="margin-bottom:0.4rem">
+        <input type="text" id="newMemberName" placeholder="名前を追加（例：おばあちゃん）" maxlength="20">
+        <button class="btn-secondary" id="addMemberBtn" style="width:auto;padding:0 0.8rem;white-space:nowrap;font-size:0.85rem">追加</button>
+      </div>
+    </div>
+
+    <!-- シフト追加フォーム -->
     <div class="card">
       <div class="card-title">シフトを追加</div>
+
+      <!-- スタンプ選択 -->
+      <div class="stamp-label">種類を選ぶ（複数OK）</div>
+      <div class="stamps" id="stampButtons"></div>
+      <div class="selected-stamps" id="selectedStamps"></div>
+
       <div class="form-row">
         <div class="form-group">
           <label>日付</label>
           <input type="date" id="shiftDate">
         </div>
         <div class="form-group">
-          <label>担当者名</label>
-          <input type="text" id="shiftMember" placeholder="例：お父さん" maxlength="20">
+          <label>担当者</label>
+          <select id="shiftMember">
+            <option value="">選んでください</option>
+          </select>
         </div>
       </div>
       <div class="form-row">
@@ -441,21 +427,21 @@
           <input type="time" id="shiftEnd">
         </div>
       </div>
-      <div class="form-row">
-        <div class="form-group full">
-          <label>メモ（任意）</label>
-          <textarea id="shiftNote" placeholder="例：病院の送り迎えあり"></textarea>
-        </div>
+      <div class="form-group">
+        <label>メモ（任意）</label>
+        <textarea id="shiftNote" placeholder="例：病院の送り迎えあり" style="min-height:52px;resize:vertical"></textarea>
       </div>
       <button class="btn-add" id="addBtn">＋ シフトを追加</button>
     </div>
 
+    <!-- 週ナビ -->
     <div class="week-nav">
       <button class="btn-nav" id="prevWeek">← 前週</button>
       <div class="week-label" id="weekLabel"></div>
       <button class="btn-nav" id="nextWeek">次週 →</button>
     </div>
 
+    <!-- シフト一覧 -->
     <div id="shiftList"><div class="loading">読み込み中…</div></div>
   </main>
 </div>
@@ -467,11 +453,11 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/fireba
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged }
   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import { getFirestore, collection, addDoc, deleteDoc, doc, getDocs,
-  query, where, orderBy, onSnapshot, serverTimestamp, updateDoc, arrayUnion }
+  query, where, orderBy, onSnapshot, serverTimestamp, updateDoc, arrayUnion, getDoc }
   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 // ══════════════════════════════════════════
-//  ★ ここにFirebaseの設定を貼り付けてください ★
+//  ★ Firebaseの設定
 // ══════════════════════════════════════════
 const firebaseConfig = {
   apiKey: "AIzaSyCtuu6B55AXqi6mahgy-9hOJ_3GnD34d5Y",
@@ -487,11 +473,28 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+// ── スタンプ定義 ──────────────────────────
+const STAMPS = [
+  { id: 'work',     emoji: '💼', label: '仕事' },
+  { id: 'school',   emoji: '🏫', label: '学校' },
+  { id: 'hospital', emoji: '🏥', label: '病院' },
+  { id: 'help',     emoji: '🤝', label: '協力' },
+  { id: 'outing',   emoji: '🛒', label: 'お出かけ' },
+  { id: 'lesson',   emoji: '📝', label: '塾習い事' },
+  { id: 'part',     emoji: '🧑‍🍳', label: 'バイト' },
+  { id: 'busy',     emoji: '🙅', label: '予定あり' },
+  { id: 'drive',    emoji: '🚙', label: '送迎' },
+];
+
+// ── 状態 ──────────────────────────────────
 let currentUser = null;
 let currentGroup = null;
+let isAdmin = false;
 let weekOffset = 0;
 let unsubShifts = null;
 let unsubGroups = null;
+let selectedStampIds = [];
+let groupMembers = []; // [{name, uid|null, type:'user'|'manual'}]
 
 // ── 画面切り替え ──────────────────────────
 const screens = {
@@ -514,7 +517,9 @@ function showToast(msg, isError = false) {
   setTimeout(() => t.className = 'toast', 2800);
 }
 
-// ── 招待コード生成 ────────────────────────
+function escHtml(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
 function generateCode() {
   return Math.random().toString(36).substring(2, 8).toUpperCase();
 }
@@ -525,7 +530,7 @@ function getWeekDates(offset = 0) {
   const monday = new Date(today);
   monday.setDate(today.getDate() - today.getDay() + 1 + offset * 7);
   monday.setHours(0,0,0,0);
-  return Array.from({length: 7}, (_, i) => {
+  return Array.from({length:7}, (_, i) => {
     const d = new Date(monday);
     d.setDate(monday.getDate() + i);
     return d;
@@ -533,9 +538,6 @@ function getWeekDates(offset = 0) {
 }
 const dateStr = d => d.toISOString().slice(0, 10);
 const DAY_NAMES = ['月','火','水','木','金','土','日'];
-function escHtml(str) {
-  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
 
 // ══ 認証 ═════════════════════════════════
 document.getElementById('loginBtn').onclick = async () => {
@@ -552,7 +554,7 @@ document.getElementById('loginBtn').onclick = async () => {
 const doLogout = async () => {
   if (unsubShifts) { unsubShifts(); unsubShifts = null; }
   if (unsubGroups) { unsubGroups(); unsubGroups = null; }
-  currentGroup = null;
+  currentGroup = null; isAdmin = false;
   await signOut(auth);
 };
 document.getElementById('groupLogoutBtn').onclick = doLogout;
@@ -570,20 +572,18 @@ onAuthStateChanged(auth, user => {
 });
 
 // ══ グループ管理 ══════════════════════════
-
 function loadMyGroups() {
   if (unsubGroups) unsubGroups();
   const q = query(collection(db, 'groups'), where('members', 'array-contains', currentUser.uid));
   unsubGroups = onSnapshot(q, snap => {
-    const groups = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    renderGroupList(groups);
+    renderGroupList(snap.docs.map(d => ({ id: d.id, ...d.data() })));
   });
 }
 
 function renderGroupList(groups) {
   const el = document.getElementById('myGroupList');
   if (groups.length === 0) {
-    el.innerHTML = '<div style="font-size:0.85rem;color:var(--text-muted);padding:0.5rem 0">まだグループがありません。作るか、招待コードで参加してください 😊</div>';
+    el.innerHTML = '<div style="font-size:0.85rem;color:var(--text-muted);padding:0.5rem 0">まだグループがありません。作るか招待コードで参加してください 😊</div>';
     return;
   }
   el.innerHTML = '';
@@ -595,7 +595,7 @@ function renderGroupList(groups) {
         <div class="group-item-name">🏠 ${escHtml(g.name)}</div>
         <div class="group-item-meta">招待コード: <b>${g.inviteCode}</b> ／ メンバー ${g.members.length}人</div>
       </div>
-      <div class="group-item-arrow">›</div>
+      <div style="color:var(--blue);font-size:1.2rem">›</div>
     `;
     item.onclick = () => enterGroup(g);
     el.appendChild(item);
@@ -606,23 +606,25 @@ function renderGroupList(groups) {
 document.getElementById('createGroupBtn').onclick = async () => {
   const name = document.getElementById('newGroupName').value.trim();
   if (!name) { showToast('グループ名を入力してください', true); return; }
-
   const btn = document.getElementById('createGroupBtn');
   btn.disabled = true; btn.textContent = '作成中…';
   try {
     const inviteCode = generateCode();
+    // 自分の名前をmanualMembersにも追加（ドロップダウン用）
+    const myName = currentUser.displayName || currentUser.email;
     const ref = await addDoc(collection(db, 'groups'), {
       name, inviteCode,
       ownerId: currentUser.uid,
       members: [currentUser.uid],
+      // メンバー一覧（uid付き＋手動追加）
+      memberProfiles: [{ name: myName, uid: currentUser.uid, type: 'user' }],
       createdAt: serverTimestamp()
     });
     document.getElementById('newGroupName').value = '';
     showToast(`「${name}」を作成しました！`);
-    enterGroup({ id: ref.id, name, inviteCode, members: [currentUser.uid] });
+    enterGroup({ id: ref.id, name, inviteCode, members: [currentUser.uid], ownerId: currentUser.uid, memberProfiles: [{ name: myName, uid: currentUser.uid, type: 'user' }] });
   } catch(e) {
-    console.error(e);
-    showToast('作成に失敗しました', true);
+    console.error(e); showToast('作成に失敗しました', true);
   } finally {
     btn.disabled = false; btn.textContent = '＋ グループを作成';
   }
@@ -633,59 +635,201 @@ document.getElementById('joinGroupBtn').onclick = async () => {
   const code = document.getElementById('inviteCodeInput').value.trim().toUpperCase();
   const errEl = document.getElementById('joinError');
   errEl.style.display = 'none';
-
-  if (code.length !== 6) {
-    errEl.textContent = '招待コードは6桁です';
-    errEl.style.display = 'block';
-    return;
-  }
-
+  if (code.length !== 6) { errEl.textContent = '招待コードは6桁です'; errEl.style.display = 'block'; return; }
   const btn = document.getElementById('joinGroupBtn');
   btn.disabled = true; btn.textContent = '参加中…';
   try {
     const snap = await getDocs(query(collection(db, 'groups'), where('inviteCode', '==', code)));
-    if (snap.empty) {
-      errEl.textContent = '招待コードが見つかりません。もう一度確認してください。';
-      errEl.style.display = 'block';
-      return;
-    }
+    if (snap.empty) { errEl.textContent = '招待コードが見つかりません'; errEl.style.display = 'block'; return; }
     const groupDoc = snap.docs[0];
     const groupData = { id: groupDoc.id, ...groupDoc.data() };
-
     if (groupData.members.includes(currentUser.uid)) {
-      showToast('すでに参加しています');
-      enterGroup(groupData);
-      return;
+      showToast('すでに参加しています'); enterGroup(groupData); return;
     }
-
-    await updateDoc(doc(db, 'groups', groupDoc.id), { members: arrayUnion(currentUser.uid) });
+    const myName = currentUser.displayName || currentUser.email;
+    const newProfile = { name: myName, uid: currentUser.uid, type: 'user' };
+    await updateDoc(doc(db, 'groups', groupDoc.id), {
+      members: arrayUnion(currentUser.uid),
+      memberProfiles: arrayUnion(newProfile)
+    });
     document.getElementById('inviteCodeInput').value = '';
     showToast(`「${groupData.name}」に参加しました！`);
     groupData.members.push(currentUser.uid);
+    groupData.memberProfiles = [...(groupData.memberProfiles || []), newProfile];
     enterGroup(groupData);
   } catch(e) {
-    console.error(e);
-    errEl.textContent = '参加に失敗しました: ' + e.message;
-    errEl.style.display = 'block';
+    console.error(e); errEl.textContent = '参加に失敗しました: ' + e.message; errEl.style.display = 'block';
   } finally {
     btn.disabled = false; btn.textContent = '参加';
   }
 };
 
 // グループに入る
-function enterGroup(group) {
+async function enterGroup(group) {
   currentGroup = group;
+  isAdmin = group.ownerId === currentUser.uid;
   if (unsubGroups) { unsubGroups(); unsubGroups = null; }
+
   document.getElementById('headerGroupName').textContent = group.name;
   document.getElementById('headerUser').textContent = currentUser.displayName || currentUser.email;
-  document.getElementById('shiftDate').value = dateStr(new Date());
+  document.getElementById('adminBadge').style.display = isAdmin ? 'inline' : 'none';
+  document.getElementById('membersBtn').style.display = isAdmin ? 'inline-block' : 'none';
+  document.getElementById('memberPanel').style.display = 'none';
   document.getElementById('inviteBanner').style.display = 'none';
+  document.getElementById('shiftDate').value = dateStr(new Date());
+
+  // 最新のグループ情報を取得
+  const gSnap = await getDoc(doc(db, 'groups', group.id));
+  if (gSnap.exists()) {
+    currentGroup = { id: gSnap.id, ...gSnap.data() };
+    isAdmin = currentGroup.ownerId === currentUser.uid;
+  }
+
+  groupMembers = currentGroup.memberProfiles || [];
+  renderMemberDropdown();
+  renderMemberPanel();
+  initStamps();
+
   weekOffset = 0;
   showScreen('app');
   updateWeekLabel();
   loadShifts();
 }
 
+// ── 担当者ドロップダウン ──────────────────
+function renderMemberDropdown() {
+  const sel = document.getElementById('shiftMember');
+  const current = sel.value;
+  sel.innerHTML = '<option value="">選んでください</option>';
+  groupMembers.forEach(m => {
+    const opt = document.createElement('option');
+    opt.value = m.name;
+    opt.textContent = m.name;
+    if (m.name === current) opt.selected = true;
+    sel.appendChild(opt);
+  });
+  // 自分を自動選択
+  if (!current) {
+    const myProfile = groupMembers.find(m => m.uid === currentUser.uid);
+    if (myProfile) sel.value = myProfile.name;
+  }
+}
+
+// ── メンバー管理パネル（管理者） ──────────
+function renderMemberPanel() {
+  if (!isAdmin) return;
+  const list = document.getElementById('memberList');
+  list.innerHTML = '';
+  groupMembers.forEach((m, idx) => {
+    const row = document.createElement('div');
+    row.className = 'member-row';
+    row.innerHTML = `
+      <div>
+        <div class="member-name">${escHtml(m.name)}</div>
+        <div class="member-type">${m.type === 'user' ? '📱 ログインユーザー' : '👤 手動追加'}</div>
+      </div>
+      ${m.uid !== currentGroup.ownerId && m.type === 'manual'
+        ? `<button class="btn-danger" data-idx="${idx}">削除</button>` : ''}
+    `;
+    list.appendChild(row);
+  });
+  list.querySelectorAll('.btn-danger').forEach(btn => {
+    btn.onclick = () => removeMember(parseInt(btn.dataset.idx));
+  });
+}
+
+// メンバー追加（手動）
+document.getElementById('addMemberBtn').onclick = async () => {
+  const name = document.getElementById('newMemberName').value.trim();
+  if (!name) { showToast('名前を入力してください', true); return; }
+  if (groupMembers.find(m => m.name === name)) { showToast('同じ名前がすでにいます', true); return; }
+  const newProfile = { name, uid: null, type: 'manual' };
+  try {
+    await updateDoc(doc(db, 'groups', currentGroup.id), { memberProfiles: arrayUnion(newProfile) });
+    groupMembers.push(newProfile);
+    currentGroup.memberProfiles = groupMembers;
+    document.getElementById('newMemberName').value = '';
+    renderMemberDropdown();
+    renderMemberPanel();
+    showToast(`「${name}」を追加しました！`);
+  } catch(e) {
+    console.error(e); showToast('追加に失敗しました', true);
+  }
+};
+
+// メンバー削除（手動追加のみ）
+async function removeMember(idx) {
+  const m = groupMembers[idx];
+  if (!confirm(`「${m.name}」を削除しますか？`)) return;
+  groupMembers.splice(idx, 1);
+  try {
+    await updateDoc(doc(db, 'groups', currentGroup.id), { memberProfiles: groupMembers });
+    currentGroup.memberProfiles = groupMembers;
+    renderMemberDropdown();
+    renderMemberPanel();
+    showToast('削除しました');
+  } catch(e) {
+    console.error(e); showToast('削除に失敗しました', true);
+  }
+}
+
+// メンバー管理ボタン
+document.getElementById('membersBtn').onclick = () => {
+  const panel = document.getElementById('memberPanel');
+  panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+};
+
+// ══ スタンプ ══════════════════════════════
+function initStamps() {
+  selectedStampIds = [];
+  const container = document.getElementById('stampButtons');
+  container.innerHTML = '';
+  STAMPS.forEach(s => {
+    const btn = document.createElement('button');
+    btn.className = 'stamp-btn';
+    btn.dataset.id = s.id;
+    btn.innerHTML = `${s.emoji} ${s.label}`;
+    btn.onclick = () => toggleStamp(s.id);
+    container.appendChild(btn);
+  });
+  renderSelectedStamps();
+}
+
+function toggleStamp(id) {
+  if (selectedStampIds.includes(id)) {
+    selectedStampIds = selectedStampIds.filter(x => x !== id);
+  } else {
+    selectedStampIds.push(id);
+  }
+  // ボタンの見た目更新
+  document.querySelectorAll('.stamp-btn').forEach(btn => {
+    btn.classList.toggle('selected', selectedStampIds.includes(btn.dataset.id));
+  });
+  renderSelectedStamps();
+}
+
+function renderSelectedStamps() {
+  const el = document.getElementById('selectedStamps');
+  el.innerHTML = '';
+  selectedStampIds.forEach(id => {
+    const s = STAMPS.find(x => x.id === id);
+    if (!s) return;
+    const tag = document.createElement('div');
+    tag.className = 'selected-tag';
+    tag.innerHTML = `${s.emoji} ${s.label} <button onclick="removeStamp('${id}')">×</button>`;
+    el.appendChild(tag);
+  });
+}
+
+window.removeStamp = (id) => {
+  selectedStampIds = selectedStampIds.filter(x => x !== id);
+  document.querySelectorAll('.stamp-btn').forEach(btn => {
+    btn.classList.toggle('selected', selectedStampIds.includes(btn.dataset.id));
+  });
+  renderSelectedStamps();
+};
+
+// ══ グループ変更・招待コード ══════════════
 document.getElementById('changeGroupBtn').onclick = () => {
   if (unsubShifts) { unsubShifts(); unsubShifts = null; }
   currentGroup = null;
@@ -693,11 +837,9 @@ document.getElementById('changeGroupBtn').onclick = () => {
   loadMyGroups();
 };
 
-// ══ 招待コード表示 ════════════════════════
 document.getElementById('inviteBtn').onclick = () => {
   const banner = document.getElementById('inviteBanner');
-  const isVisible = banner.style.display !== 'none';
-  banner.style.display = isVisible ? 'none' : 'flex';
+  banner.style.display = banner.style.display !== 'none' ? 'none' : 'flex';
   document.getElementById('inviteCodeDisplay').textContent = currentGroup.inviteCode;
 };
 
@@ -754,15 +896,21 @@ function renderShifts(shifts, days) {
     } else {
       dayShifts.forEach(shift => {
         const isMine = shift.userId === currentUser.uid;
+        const canDelete = isMine || isAdmin;
+        const stamps = (shift.stamps || []).map(id => {
+          const s = STAMPS.find(x => x.id === id);
+          return s ? `<span class="shift-stamp-tag">${s.emoji} ${s.label}</span>` : '';
+        }).join('');
         const item = document.createElement('div');
         item.className = 'shift-item' + (isMine ? ' mine' : '');
         item.innerHTML = `
           <div class="shift-info">
             <div class="shift-member">${escHtml(shift.member)}</div>
             <div class="shift-time">${shift.startTime} 〜 ${shift.endTime}</div>
+            ${stamps ? `<div class="shift-stamps">${stamps}</div>` : ''}
             ${shift.note ? `<div class="shift-note">${escHtml(shift.note)}</div>` : ''}
           </div>
-          ${isMine ? `<button class="btn-delete" data-id="${shift.id}">✕</button>` : ''}
+          ${canDelete ? `<button class="btn-delete" data-id="${shift.id}">✕</button>` : ''}
         `;
         block.appendChild(item);
       });
@@ -774,25 +922,33 @@ function renderShifts(shifts, days) {
   });
 }
 
+// シフト追加
 document.getElementById('addBtn').onclick = async () => {
   if (!currentUser || !currentGroup) return;
   const date   = document.getElementById('shiftDate').value;
-  const member = document.getElementById('shiftMember').value.trim();
+  const member = document.getElementById('shiftMember').value;
   const start  = document.getElementById('shiftStart').value;
   const end    = document.getElementById('shiftEnd').value;
   const note   = document.getElementById('shiftNote').value.trim();
+
   if (!date || !member || !start || !end) { showToast('日付・担当者・時刻は必須です', true); return; }
+  if (selectedStampIds.length === 0) { showToast('種類を1つ以上選んでください', true); return; }
+
   const btn = document.getElementById('addBtn');
   btn.disabled = true; btn.textContent = '追加中…';
   try {
     await addDoc(collection(db, 'shifts'), {
       groupId: currentGroup.id,
       date, member, startTime: start, endTime: end, note,
+      stamps: selectedStampIds,
       userId: currentUser.uid,
       userName: currentUser.displayName || currentUser.email,
       createdAt: serverTimestamp()
     });
-    document.getElementById('shiftMember').value = '';
+    // スタンプリセット
+    selectedStampIds = [];
+    document.querySelectorAll('.stamp-btn').forEach(b => b.classList.remove('selected'));
+    renderSelectedStamps();
     document.getElementById('shiftStart').value = '';
     document.getElementById('shiftEnd').value = '';
     document.getElementById('shiftNote').value = '';
